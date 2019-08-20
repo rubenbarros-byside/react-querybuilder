@@ -67,7 +67,7 @@ const Rule = (props) => {
         className: `rule-value ${classNames.value}`,
         handleOnChange: onValueChanged,
         level: level,
-        metaData: metaData,
+        metaData: metaData
       })}
       {React.createElement(controls.removeRuleAction, {
         label: translations.removeRule.label,

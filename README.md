@@ -210,6 +210,7 @@ This is a custom controls object that allows you to override the control element
   value: React.PropTypes.string, //value from the existing query representation, if any
   handleOnChange: React.PropTypes.func //callback function to update the query representation
   level: React.PropTypes.number //The level the group this rule belongs to
+  metaData: React.PropTypes.object //object with the selected field object to allow us to choose a different kind of input
 }
 ```
 
