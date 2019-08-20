@@ -30037,7 +30037,8 @@ var QueryBuilder = function QueryBuilder(props) {
       id: "r-".concat(uuid_v4__WEBPACK_IMPORTED_MODULE_3___default()()),
       field: field,
       value: '',
-      operator: getOperators(field)[0].name
+      operator: getOperators(field)[0].name,
+      metaData: fields[0]
     };
   };
   /**
@@ -30113,9 +30114,15 @@ var QueryBuilder = function QueryBuilder(props) {
     Object.assign(rule, _defineProperty({}, prop, value)); // Reset operator and value for field change
 
     if (prop === 'field') {
+      var field = schema.fields.find(function (field) {
+        return field.name === value;
+      });
       Object.assign(rule, {
         operator: getOperators(rule.field)[0].name,
         value: ''
+      });
+      Object.assign(rule, {
+        metaData: field
       });
     }
 
@@ -30309,6 +30316,7 @@ var Rule = function Rule(props) {
       operator = props.operator,
       value = props.value,
       translations = props.translations,
+      metaData = props.metaData,
       _props$schema = props.schema,
       fields = _props$schema.fields,
       controls = _props$schema.controls,
@@ -30340,7 +30348,8 @@ var Rule = function Rule(props) {
     value: value,
     className: "rule-value ".concat(classNames.value),
     handleOnChange: onValueChanged,
-    level: level
+    level: level,
+    metaData: metaData
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(controls.removeRuleAction, {
     label: translations.removeRule.label,
     title: translations.removeRule.title,
@@ -30473,7 +30482,8 @@ var RuleGroup = function RuleGroup(props) {
       schema: props.schema,
       parentId: props.id,
       translations: props.translations,
-      onRuleRemove: onRuleRemove
+      onRuleRemove: onRuleRemove,
+      metaData: r.metaData
     });
   }));
 };
