@@ -106,6 +106,7 @@ const RuleGroup = (props) => {
             parentId={props.id}
             translations={props.translations}
             onRuleRemove={onRuleRemove}
+            metaData={r.metaData}
           />
         )
       )}

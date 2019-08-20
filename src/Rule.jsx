@@ -34,6 +34,7 @@ const Rule = (props) => {
     operator,
     value,
     translations,
+    metaData,
     schema: { fields, controls, getOperators, getLevel, classNames }
   } = props;
 
@@ -65,7 +66,8 @@ const Rule = (props) => {
         value: value,
         className: `rule-value ${classNames.value}`,
         handleOnChange: onValueChanged,
-        level: level
+        level: level,
+        metaData: metaData,
       })}
       {React.createElement(controls.removeRuleAction, {
         label: translations.removeRule.label,
