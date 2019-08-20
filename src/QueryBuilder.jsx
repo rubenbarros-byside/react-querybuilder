@@ -140,7 +140,8 @@ const QueryBuilder = (props) => {
       id: `r-${uniqueId()}`,
       field,
       value: '',
-      operator: getOperators(field)[0].name
+      operator: getOperators(field)[0].name,
+      metaData: fields[0],
     };
   };
 
@@ -207,7 +208,9 @@ const QueryBuilder = (props) => {
 
     // Reset operator and value for field change
     if (prop === 'field') {
+      const field = schema.fields.find(field => field.name === value);
       Object.assign(rule, { operator: getOperators(rule.field)[0].name, value: '' });
+      Object.assign(rule, { metaData: field });
     }
 
     setRoot(rootCopy);
